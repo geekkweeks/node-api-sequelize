@@ -20,15 +20,32 @@ app.get("/users", (req, res, next) => {
 });
 
 app.get("/add-user", (req, res, next) => {
-  let user = User.create({
-    firstName: "John",
-    lastName: "dadsad",
-    email: "jhonchecna@gmail.com",
-  })
+  // USE CREATE FUNCTION
+  //   User.create({
+  //     firstName: "John",
+  //     lastName: "dadsad",
+  //     email: "jhonchecna@gmail.com",
+  //   })
+  //     .then((data) => {
+  //       res.send(data);
+  //     })
+  //     .catch((err) => res.send(err.message));
+
+  // USE BUILD FUNCTION
+  const user = User.build({
+    firstName: "dsd",
+    lastName: "dsd",
+    email: "ssd@gmail.com",
+  });
+  user
+    .save()
     .then((data) => {
       res.send(data);
     })
-    .catch((err) => res.send(err.message));
+    .catch((err) => {
+      res.status(400);
+      res.send(err.message);
+    });
 });
 
 app.get("/", (req, res, next) => {

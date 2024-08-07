@@ -47,6 +47,11 @@ const User = {
   },
   email: {
     type: Sequelize.STRING,
+    // unique: true,
+  },
+  isActive: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: true,
   },
 };
 
